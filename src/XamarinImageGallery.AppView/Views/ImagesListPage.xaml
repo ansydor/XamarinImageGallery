@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinImageGallery.AppView.Views.ImagesListPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name="ItemsListView"
+				ItemsSource="{Binding Images}"
+                VerticalOptions="FillAndExpand"
+                HasUnevenRows="true"
+                RefreshCommand="{Binding LoadMoreCommand}"
+                IsPullToRefreshEnabled="true"
+                IsRefreshing="{Binding IsBusy, Mode=TwoWay}"
+                CachingStrategy="RecycleElement"
+				ItemSelected="OnItemSelected" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ImageCell ImageSource="{Binding Url}" Text="{Binding Title}">
+                        </ImageCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.Footer>
+                    <Button Margin="0,10,0,0" Text="Load more" Command="{Binding LoadMoreCommand}"
+                            BackgroundColor="{StaticResource Primary}" TextColor="White"/>
+                </ListView.Footer>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
