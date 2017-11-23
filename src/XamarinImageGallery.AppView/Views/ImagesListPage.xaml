@@ -8,7 +8,7 @@
 				ItemsSource="{Binding Images}"
                 VerticalOptions="FillAndExpand"
                 HasUnevenRows="true"
-                RefreshCommand="{Binding LoadMoreCommand}"
+                RefreshCommand="{Binding RefreshCommand}"
                 IsPullToRefreshEnabled="true"
                 IsRefreshing="{Binding IsBusy, Mode=TwoWay}"
                 CachingStrategy="RecycleElement"

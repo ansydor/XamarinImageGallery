@@ -9,7 +9,7 @@ namespace XamarinImageGallery.Model.Manager
 {
     public interface IImageManager
     {
-        Task<IEnumerable<ImageItem>> GetListAsync();
+        Task<IEnumerable<ImageItem>> GetListAsync(int lastId = 0);
     }
 
     public class ImageManager : IImageManager
@@ -20,9 +20,9 @@ namespace XamarinImageGallery.Model.Manager
             _imageStore = imageStore;
         }
 
-        public async Task<IEnumerable<ImageItem>> GetListAsync()
+        public async Task<IEnumerable<ImageItem>> GetListAsync(int lastId = 0)
         {
-            return await _imageStore.GetImagesListAsync().ConfigureAwait(false);
+            return await _imageStore.GetImagesListAsync(lastId).ConfigureAwait(false);
         }
     }
 }
